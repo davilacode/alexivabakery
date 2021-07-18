@@ -21,10 +21,10 @@ exports.createPages = async gatsbyUtilities => {
   }
 
   // If there are posts, create pages for them
-  await createIndividualBlogPostPages({ posts, gatsbyUtilities })
+  // await createIndividualBlogPostPages({ posts, gatsbyUtilities })
 
   // And a paginated archive
-  await createBlogPostArchive({ posts, gatsbyUtilities })
+  // await createBlogPostArchive({ posts, gatsbyUtilities })
 }
 
 /**
