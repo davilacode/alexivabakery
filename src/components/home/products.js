@@ -2,7 +2,7 @@ import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 
-const Products = () => {
+const Products = ({openGallery}) => {
 
     const {
         wp: {
@@ -23,7 +23,7 @@ const Products = () => {
                 </div>
                 
                 { gallery.length > 0 && gallery.map(({title, description, photo, gallery}, i) => (
-                    <div className="col-md-3 single-product" key={title+i}>
+                    <div className="col-md-3 single-product" key={title+i} onClick={() => openGallery(gallery, true)}>
                         <GatsbyImage image={photo.localFile.childImageSharp.gatsbyImageData} alt={title} />
                         <h3 className="text-center py-4 fw-bold">{title}</h3>
                         <p className="text-center">{description}</p>
@@ -57,7 +57,9 @@ const query = graphql`
                             }
                         }
                         gallery {
-                            id
+                            localFile {
+                                publicURL
+                            }
                         }
                     }
                 }

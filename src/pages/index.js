@@ -1,23 +1,35 @@
-import React from "react"
+import React, { useState } from "react"
 import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Banners from "../components/home/banners"
 import Products from "../components/home/products"
+import Gallery from "../components/gallery"
 
 const Home  = ({data, location}) => {
     const siteTitle = data.site.siteMetadata.title
     const bannersHome = data.wp.banners.ACFBanners.bannersHome
     const bannersMiddle = data.wp.banners.ACFBanners.bannerMiddle
     const socialMedia = data.wp.siteSettings.ACFTopMenu.socialMedia
+    const [gallery, setGallery] = useState([])
+    const [active, setActive] = useState(false)
+
+
+    const openGallery = (gallery, active) => {
+      setGallery(gallery)
+      setActive(active)
+    }
 
     return (
         <Layout location={location} title={siteTitle} isHomePage>
             <Seo title="Inicio" lang="es"/>
             <Banners banners={bannersHome} socialMedia={socialMedia} location={"home"} dots arrow />
-            <Products />
+            <Products openGallery={openGallery} />
             <Banners banners={bannersMiddle} location={"middle"} />
+            {active && 
+              <Gallery gallery={gallery} active={active} setActive={setActive} />
+            }
         </Layout>
     )
 }

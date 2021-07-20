@@ -10,6 +10,7 @@
   "dependencies": {
     "@popperjs/core": "^2.9.2",
     "bootstrap": "^5.0.2",
+    "fotorama-react-wrapper": "^1.0.7",
     "gatsby": "^3.3.0",
     "gatsby-image": "^3.3.0",
     "gatsby-plugin-image": "^1.9.0",

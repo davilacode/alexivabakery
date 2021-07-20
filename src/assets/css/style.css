@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+@import "https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css";
 /*
     Alexiva Bakery
     By: @davdevelopment
@@ -29,7 +30,7 @@
 .title {font-family: 'amithenregular';}
 
 /* HEADER */
-header {position: fixed; top: 0; left: 0; transition: all .3s linear; width: 100%; z-index: 23123;}
+header {position: fixed; top: 0; left: 0; transition: all .3s linear; width: 100%; z-index: 2;}
 header.active {box-shadow: 0 5px 5px 0 rgba(0,0,0,0.1); background-color: #fff;}
 header.active .navbar-nav .menu-item a {color: var(--gray-dark);}
 .navbar-nav .menu-item {padding-right: 30px;}
