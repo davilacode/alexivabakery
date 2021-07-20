@@ -7,6 +7,17 @@
     La Crea Factory
 */
 
+@font-face {
+    font-family: 'amithenregular';
+    src: url('./fonts/amithen-webfont.eot');
+    src: url('./fonts/amithen-webfont.eot?#iefix') format('embedded-opentype'),
+         url('./fonts/amithen-webfont.woff2') format('woff2'),
+         url('./fonts/amithen-webfont.woff') format('woff'),
+         url('./fonts/amithen-webfont.svg#amithenregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
 :root {
     --gray-middle: #D1CFCF;
     --gray-clear: #EFEFEF;
@@ -15,9 +26,21 @@
     --orange-dark: #ffa803;
 }
 
+.title {font-family: 'amithenregular';}
+
 /* HEADER */
 header {position: fixed; top: 0; left: 0; width: 100%; z-index: 23123;}
 .navbar-nav .menu-item {padding-right: 30px;}
 .navbar-nav .menu-item:last-child {padding-right: 0;}
 .navbar-nav .menu-item a {font-weight: bold; color: #fff; padding: 5px 25px; text-decoration: none;}
 .navbar-nav .menu-item:last-child a {background: var(--orange-middle); border-radius: 50px;}
+
+/* BANNERS */
+.wrap-banner {position: relative;}
+.text-over-banner {display: flex; position: absolute; align-items: center; height: 100%; left: 0; top: 0; width: 100%;}
+.text-over-banner h2 {color: #fff; font-size: 5em; width: 100%;}
+.carousel-indicators [data-bs-target] {border: 3px solid #fff; height: 12px; margin: 0 7px; opacity: 1; width: 12px; border-radius: 50%;}
+.carousel-indicators [data-bs-target].active {background: transparent;}
+
+.wrap-social-media {flex-flow: column; list-style: none; position: absolute; bottom: 0; right: 25px;z-index: 123123;}
+.wrap-social-media li {margin-bottom: 25px;}
