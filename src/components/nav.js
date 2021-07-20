@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, useStaticQuery, graphql } from "gatsby"
 import Menu from "./menu"
 import parse from "html-react-parser"
-import { GatsbyImage } from "gatsby-plugin-image"
+import { GatsbyImage, StaticImage } from "gatsby-plugin-image"
 
 const Nav = () => {
+
+    const [header, setHeader] = useState('normal')
 
     const {
       wp: {
@@ -17,11 +19,32 @@ const Nav = () => {
       }
     } = useStaticQuery(query)
 
+
+    window.addEventListener('scroll', function() { 
+      if(window.scrollY >= 350){
+        setHeader('active')
+      }else{
+        setHeader('normal')
+      }
+    })
+
     return (
-      <header> 
+      <header className={header}> 
         <nav className="navbar navbar-expand-lg navbar-light">
           <div className="container">
-            <Link to="/" className="navbar-brand"><GatsbyImage image={logo.desktopLogo.childImageSharp.gatsbyImageData} alt={parse(title)} /></Link>
+            <Link to="/" className="navbar-brand">
+              {header === 'normal' ? 
+                <GatsbyImage image={logo.desktopLogo.childImageSharp.gatsbyImageData} alt={parse(title)} />
+                :
+                <StaticImage
+                  src="../assets/images/logo_dark.png"
+                  alt={parse(title)}
+                  layout="fixed"
+                  placeholder={'none'}
+                  width={200}
+                />
+              }
+            </Link>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#primaryMenu" aria-controls="primaryMenu" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"></span>
             </button>
