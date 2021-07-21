@@ -19,14 +19,15 @@ const Nav = () => {
       }
     } = useStaticQuery(query)
 
-
-    window.addEventListener('scroll', function() { 
-      if(window.scrollY >= 350){
-        setHeader('active')
-      }else{
-        setHeader('normal')
-      }
-    })
+    if(typeof window !== 'undefined'){
+      window.addEventListener('scroll', function() { 
+        if(window.scrollY >= 350){
+          setHeader('active')
+        }else{
+          setHeader('normal')
+        }
+      })
+    }
 
     return (
       <header className={header}> 
