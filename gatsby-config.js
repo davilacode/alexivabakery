@@ -71,6 +71,12 @@ module.exports = {
 
     // See https://www.gatsbyjs.com/plugins/gatsby-plugin-react-helmet/?=gatsby-plugin-react-helmet
     `gatsby-plugin-react-helmet`,
+    {
+      resolve: "gatsby-plugin-anchor-links",
+      options: {
+        offset: -153
+      }
+    }
 
     /**
      * this (optional) plugin enables Progressive Web App + Offline functionality

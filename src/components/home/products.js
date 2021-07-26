@@ -2,7 +2,7 @@ import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 
-const Products = ({openGallery}) => {
+const Products = ({openGallery, id}) => {
 
     const {
         wp: {
@@ -15,7 +15,7 @@ const Products = ({openGallery}) => {
     } = useStaticQuery(query);
 
     return (
-        <div className="wrap-products container pb-5">
+        <div className="wrap-products container pb-5" id={id}>
             <div className="row">
                 <div className="col-12 py-5">
                     <h2 className="text-center title">{title}</h2>
@@ -24,17 +24,17 @@ const Products = ({openGallery}) => {
                 { gallery.length > 0 && gallery.map(({title, description, photo, gallery}, i) => (
                     <>
                         {gallery !== null ?
-                            <div className="col-md-3 single-product" key={title+i} data-bs-toggle="modal" data-bs-target="#GalleryModal" onClick={() => openGallery(gallery)}>
+                            <button className="col-md-3 single-product" key={title+i} data-bs-toggle="modal" data-bs-target="#GalleryModal" onClick={() => openGallery(gallery)}>
                                 <GatsbyImage image={photo.localFile.childImageSharp.gatsbyImageData} alt={title} />
                                 <h3 className="text-center py-4 fw-bold">{title}</h3>
                                 <p className="text-center">{description}</p>
-                            </div>
+                            </button>
                         :
-                            <div className="col-md-3 single-product" key={title+i}>
+                            <button className="col-md-3 single-product" key={title+i}>
                                 <GatsbyImage image={photo.localFile.childImageSharp.gatsbyImageData} alt={title} />
                                 <h3 className="text-center py-4 fw-bold">{title}</h3>
                                 <p className="text-center">{description}</p>
-                            </div>
+                            </button>
                         }
                     </>
                 ))}

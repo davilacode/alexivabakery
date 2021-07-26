@@ -52,7 +52,9 @@ header.active .navbar-nav .menu-item a {color: var(--gray-dark);}
 .wrap-products .title {color: var(--gray-dark); font-size: 3em;}
 .wrap-products h3 {color: var(--orange-dark);}
 .wrap-products p {color: var(--gray-dark);}
-.single-product {cursor: pointer;}
-.single-product > div {border-radius: 50%;}
-
-.last-product {display: flex; flex-flow: column;align-items: center;}
+.single-product,
+.last-product {display: flex; appearance: none; background-color: transparent; outline: none; border: none; flex-flow: column;align-items: center; cursor: pointer;}
+.single-product > div,
+.last-product > div {border-radius: 50%; position: relative;}
+.last-product > div {overflow:visible;}
+.last-product > div:before {border-radius: 50%; background-color: var(--orange-dark); content: ''; height: 100%; position: absolute; top: 20px; left: 0; width: 100%;}

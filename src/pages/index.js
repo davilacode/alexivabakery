@@ -24,10 +24,10 @@ const Home  = ({data, location}) => {
         <Layout location={location} title={siteTitle} isHomePage>
             <Seo title="Inicio" lang="es"/>
             <Banners banners={bannersHome} socialMedia={socialMedia} location={"home"} dots arrow />
-            <Products openGallery={openGallery} />
+            <Products openGallery={openGallery} id="pasteleria"/>
             <Banners banners={bannersMiddle} location={"middle"} />
+            <LastProducts openGallery={openGallery} id="panaderia" />
             <Gallery gallery={gallery} />
-            <LastProducts openGallery={openGallery} />
         </Layout>
     )
 }
