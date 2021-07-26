@@ -25,13 +25,13 @@ const LastProducts = ({openGallery, id}) => {
                     <>
                         {gallery !== null ?
                             <button className="col-md-4 last-product" key={title+i} data-bs-toggle="modal" data-bs-target="#GalleryModal" onClick={() => openGallery(gallery)}>
-                                <GatsbyImage image={photo.localFile.childImageSharp.gatsbyImageData} alt={title} />
+                                <GatsbyImage image={photo.localFile.childImageSharp.gatsbyImageData} alt={title} pl />
                                 <h3 className="text-center pt-5 pb-4 fw-bold">{title}</h3>
                                 <p className="text-center">{description}</p>
                             </button>
                         :
                             <button className="col-md-4 last-product" key={title+i}>
-                                <GatsbyImage image={photo.localFile.childImageSharp.gatsbyImageData} alt={title} />
+                                <GatsbyImage image={photo.localFile.childImageSharp.gatsbyImageData} alt={title} pl />
                                 <h3 className="text-center pt-5 pb-4 fw-bold">{title}</h3>
                                 <p className="text-center">{description}</p>
                             </button>
@@ -60,6 +60,7 @@ const query = graphql`
                                 childImageSharp {
                                     gatsbyImageData(
                                         layout: CONSTRAINED,
+                                        placeholder: NONE
                                         width: 300
                                     )
                                 }

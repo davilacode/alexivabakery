@@ -1,12 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, useStaticQuery, graphql } from "gatsby"
 import Menu from "./menu"
 import parse from "html-react-parser"
-import { GatsbyImage, StaticImage } from "gatsby-plugin-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 
 const Nav = () => {
-
-    const [header, setHeader] = useState('normal')
 
     const {
       wp: {
@@ -16,10 +14,16 @@ const Nav = () => {
             logo
           }
         }
-      }
+      },
+      file
     } = useStaticQuery(query)
 
+    const [header, setHeader] = useState('normal')
+    const [logoRes, setLogoRes] = useState(logo.desktopLogo.childImageSharp.gatsbyImageData)
+    const [darkLogoRes, setDarkLogoRes] = useState(file.desktopLogo.gatsbyImageData)
+
     if(typeof window !== 'undefined'){
+      
       window.addEventListener('scroll', function() { 
         if(window.scrollY >= 350){
           setHeader('active')
@@ -27,7 +31,20 @@ const Nav = () => {
           setHeader('normal')
         }
       })
+      window.addEventListener('resize', function() { 
+        if(window.innerWidth <= 768 ){
+          setLogoRes(file.mobileLogo.gatsbyImageData)
+          setDarkLogoRes(file.mobileLogo.gatsbyImageData)
+        }else{
+          setLogoRes(logo.desktopLogo.childImageSharp.gatsbyImageData)
+          setDarkLogoRes(file.desktopLogo.gatsbyImageData)
+        }
+      })
     }
+
+    useEffect(()=>{
+      window.dispatchEvent(new Event('resize'));
+    }, [])
 
     return (
       <header className={header}> 
@@ -35,15 +52,9 @@ const Nav = () => {
           <div className="container">
             <Link to="/" className="navbar-brand">
               {header === 'normal' ? 
-                <GatsbyImage image={logo.desktopLogo.childImageSharp.gatsbyImageData} alt={parse(title)} />
+                <GatsbyImage image={logoRes} alt={parse(title)} />
                 :
-                <StaticImage
-                  src="../assets/images/logo_dark.png"
-                  alt={parse(title)}
-                  layout="fixed"
-                  placeholder={'none'}
-                  width={200}
-                />
+                <GatsbyImage image={darkLogoRes} alt={parse(title)} />
               }
             </Link>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#primaryMenu" aria-controls="primaryMenu" aria-expanded="false" aria-label="Toggle navigation">
@@ -80,6 +91,14 @@ const query = graphql`query LogoAndGeneralQuery {
           }
         }
       }
+    }
+  }
+  file(relativePath: {eq: "logo_dark.png"}) {
+    desktopLogo: childImageSharp {
+      gatsbyImageData(width: 200, placeholder: NONE, layout: FIXED)
+    }
+    mobileLogo: childImageSharp {
+      gatsbyImageData(width: 140, placeholder: NONE, layout: FIXED)
     }
   }
 }
