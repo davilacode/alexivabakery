@@ -53,4 +53,6 @@ header.active .navbar-nav .menu-item a {color: var(--gray-dark);}
 .wrap-products h3 {color: var(--orange-dark);}
 .wrap-products p {color: var(--gray-dark);}
 .single-product {cursor: pointer;}
+.single-product > div {border-radius: 50%;}
 
+.last-product {display: flex; flex-flow: column;align-items: center;}

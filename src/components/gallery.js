@@ -1,37 +1,24 @@
-// import { Modal } from "bootstrap"
-// import React, { useState, useEffect, useRef } from "react"
+import React from "react"
+import ImageGallery from 'react-image-gallery'
 
-const Gallery = ({gallery, active, setActive}) => {
-    // const [modal, setModal] = useState(null)
-    // const galleryModal = useRef()
+const Gallery = ({gallery}) => {
 
-    // useEffect(() => {
-    //     setModal(
-    //         new Modal(galleryModal.current)
-    //     )
-    // }, [])
+    let images = [];
+    
+    gallery && gallery.map((image)=>(
+        images.push({original: image.localFile.publicURL, thumbnail: image.localFile.publicURL})
+    ))
 
-
-    // useEffect(() =>{
-    //     if(active && modal !== null){
-    //         modal.show();
-    //         setActive(false);
-    //     }
-    // }, [modal])
-    // return (
-    //     <div className={`modal fade`} ref={galleryModal} tabIndex="-1" aria-labelledby="galleryModal" aria-hidden="true">
-    //         <div className="modal-dialog modal-xl modal-dialog-centered">
-    //             <div className="modal-content ">
-    //                 <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={()=>modal.hide()}></button>
-    //                 {/* <div className="fotorama" data-nav="thumbs" data-auto="false">
-    //                     { gallery && gallery.map((image, i) => (
-    //                         <img src={image.localFile.publicURL} key={i} alt="empty"/>
-    //                     ))}
-    //                 </div> */}
-    //             </div>
-    //         </div>
-    //     </div>
-    // )
+    return (
+        <div className="modal fade" id="GalleryModal" tabIndex="-1" aria-labelledby="GalleryModalLabel" aria-hidden="true">
+            <div className="modal-dialog modal-xl modal-dialog-centered">
+                <div className="modal-content ">
+                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <ImageGallery items={images} />
+                </div>
+            </div>
+        </div>
+    )
 }
 
 export default Gallery

@@ -2,13 +2,13 @@ import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 
-const Products = ({openGallery}) => {
+const LastProducts = ({openGallery}) => {
 
     const {
         wp: {
             gallery: { 
-                ACFGallery: {
-                    title, lead, gallery
+                ACFGallery2: {
+                    title2, lead2, gallery2
                 }
             }
         }
@@ -18,19 +18,19 @@ const Products = ({openGallery}) => {
         <div className="wrap-products container pb-5">
             <div className="row">
                 <div className="col-12 py-5">
-                    <h2 className="text-center title">{title}</h2>
-                    <p className="text-center lead">{lead}</p>
+                    <h2 className="text-center title">{title2}</h2>
+                    <p className="text-center lead">{lead2}</p>
                 </div>
-                { gallery.length > 0 && gallery.map(({title, description, photo, gallery}, i) => (
+                { gallery2?.length > 0 && gallery2.map(({title, description, photo, gallery}, i) => (
                     <>
                         {gallery !== null ?
-                            <div className="col-md-3 single-product" key={title+i} data-bs-toggle="modal" data-bs-target="#GalleryModal" onClick={() => openGallery(gallery)}>
+                            <div className="col-md-4 last-product" key={title+i} data-bs-toggle="modal" data-bs-target="#GalleryModal" onClick={() => openGallery(gallery)}>
                                 <GatsbyImage image={photo.localFile.childImageSharp.gatsbyImageData} alt={title} />
                                 <h3 className="text-center py-4 fw-bold">{title}</h3>
                                 <p className="text-center">{description}</p>
                             </div>
                         :
-                            <div className="col-md-3 single-product" key={title+i}>
+                            <div className="col-md-4 last-product" key={title+i}>
                                 <GatsbyImage image={photo.localFile.childImageSharp.gatsbyImageData} alt={title} />
                                 <h3 className="text-center py-4 fw-bold">{title}</h3>
                                 <p className="text-center">{description}</p>
@@ -43,16 +43,16 @@ const Products = ({openGallery}) => {
     )
 }
 
-export default Products
+export default LastProducts
 
 const query = graphql`
-    query products {
+    query lastProducts {
         wp {
             gallery {
-                ACFGallery {
-                    title
-                    lead
-                    gallery {
+                ACFGallery2 {
+                    title2
+                    lead2
+                    gallery2 {
                         title
                         description
                         photo {

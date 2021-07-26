@@ -5,6 +5,7 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Banners from "../components/home/banners"
 import Products from "../components/home/products"
+import LastProducts from "../components/home/lastProducts"
 import Gallery from "../components/gallery"
 
 const Home  = ({data, location}) => {
@@ -13,12 +14,10 @@ const Home  = ({data, location}) => {
     const bannersMiddle = data.wp.banners.ACFBanners.bannerMiddle
     const socialMedia = data.wp.siteSettings.ACFTopMenu.socialMedia
     const [gallery, setGallery] = useState([])
-    const [active, setActive] = useState(false)
 
 
-    const openGallery = (gallery, active) => {
+    const openGallery = (gallery) => {
       setGallery(gallery)
-      setActive(active)
     }
 
     return (
@@ -27,9 +26,8 @@ const Home  = ({data, location}) => {
             <Banners banners={bannersHome} socialMedia={socialMedia} location={"home"} dots arrow />
             <Products openGallery={openGallery} />
             <Banners banners={bannersMiddle} location={"middle"} />
-            {active && 
-              <Gallery gallery={gallery} active={active} setActive={setActive} />
-            }
+            <Gallery gallery={gallery} />
+            <LastProducts openGallery={openGallery} />
         </Layout>
     )
 }
