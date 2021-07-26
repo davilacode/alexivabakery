@@ -1,5 +1,6 @@
 import React from "react"
 import Nav from "./nav"
+import Footer from "./footer"
 
 const Layout = ({ isHomePage, children }) => {
 
@@ -9,13 +10,7 @@ const Layout = ({ isHomePage, children }) => {
 
       <main>{children}</main>
 
-      <footer>
-        © {new Date().getFullYear()}, Built with
-        {` `}
-        <a href="https://www.gatsbyjs.com">Gatsby</a>
-        {` `}
-        And <a href="https://wordpress.org/">WordPress</a>
-      </footer>
+      <Footer/>
     </div>
   )
 }
