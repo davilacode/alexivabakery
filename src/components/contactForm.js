@@ -85,7 +85,7 @@ const ContactForm = () => {
 
                 return (
                     <>
-                        <form onSubmit={handleSubmit(onSubmit)}>
+                        <form onSubmit={handleSubmit(onSubmit)} id="contactanos">
                             <div className="form-floating mb-3">
                                 <input type="text" className={`form-control ${errors.name ? 'is-invalid' : ''}`} id="name" placeholder="Pedro Pérez" {...register("name", { required: true })}/>
                                 <label htmlFor="name">Nombre completo</label>
