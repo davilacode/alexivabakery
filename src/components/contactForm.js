@@ -110,7 +110,10 @@ const ContactForm = () => {
                                 { errors.messages && errors.messages.type === "required" && <div className="form-text">Campo requerido</div>}
                                 { errors.messages && errors.messages.type === "maxLength" && <div className="form-text">Máximo 250 caracteres</div>}
                             </div>
-                            <button type="submit" className="btn btn-primary btn-link mx-auto">Enviar</button>
+                            <div className="text-end">
+                                <button type="submit" className="btn btn-primary btn-link px-5 fs-5 fw-bold">Enviar</button>
+                            </div>
+                            
                         </form>
                         <div className={`form-response ${loading || error || data ? 'show' : ''} ${error || data ? 'message' : ''}`}>
                             {loading && <div className="spinner-grow" role="status"><span className="visually-hidden">Loading...</span></div>}

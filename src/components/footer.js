@@ -47,6 +47,7 @@ const Footer = () => {
                                 <li>@alexiva</li>
                             </ul>
                         }
+                        <address className="txt-gray fw-bold">2142 N Mitthoeffer Rd, Indianapolis, 46229</address>
                     </div>
                     <div className="footer-menu justify-content-center align-items-center col-md-4 d-flex flex-column">
                         {menuItems && menuItems.nodes.map((item, i) => {
@@ -63,10 +64,11 @@ const Footer = () => {
                         })}
 
                     </div>
-                    <div className="col-md-4">
+                    <div className="col-md-4 ps-md-5 pt-5 pt-md-0">
+                        <p className="txt-gray fw-bold fs-4">Deseas más información, dejanos tus datos y te contactaremos</p>
                         <ContactForm />
                     </div>
-                    <div className="col-12 text-center pt-5 pb-2">
+                    <div className="col-12 text-center pt-5 pb-2 copyright">
                         © {new Date().getFullYear()}, Alexiva Bakery & Cakeshop. Made with ❤️ by La Crea Factory.
                     </div>
                 </div>
