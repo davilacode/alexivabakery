@@ -36,6 +36,9 @@
 .form-floating > label {color: var(--gray-dark); font-weight: bold; margin-left: 14px; opacity: .5;}
 .form-floating > textarea {resize: none;}
 form .btn-link {background: var(--orange-middle); border-radius: 50px; text-decoration: none; color: var(--gray-dark); border-color: var(--orange-middle);}
+form .btn-link:active,
+form .btn-link:focus,
+form .btn-link:hover {background: rgba(255,168,3,.6);box-shadow: none !important; color: var(--gray-dark); border-color: var(--orange-middle);}
 
 /* HEADER */
 header {position: fixed; top: 0; left: 0; transition: all .3s linear; width: 100%; z-index: 3;}
