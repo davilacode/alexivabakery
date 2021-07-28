@@ -2,6 +2,7 @@ import React from "react"
 import { StaticImage, GatsbyImage } from "gatsby-plugin-image"
 import parse from "html-react-parser"
 import { useStaticQuery, graphql, Link } from "gatsby"
+import ContactForm from "./contactForm"
 
 const Footer = () => {
 
@@ -63,7 +64,7 @@ const Footer = () => {
 
                     </div>
                     <div className="col-md-4">
-
+                        <ContactForm />
                     </div>
                     <div className="col-12 text-center pt-5 pb-2">
                         © {new Date().getFullYear()}, Alexiva Bakery & Cakeshop. Made with ❤️ by La Crea Factory.
