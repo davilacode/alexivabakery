@@ -31,7 +31,7 @@ module.exports = {
           `https://api.alexivabakery.com/graphql`,
       },
     },
-
+    `gatsby-plugin-gatsby-cloud`,
     /**
      * We need this plugin so that it adds the "File.publicURL" to our site
      * It will allow us to access static url's for assets like PDF's
