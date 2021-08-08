@@ -1,4 +1,4 @@
-import React from "react"
+import React, { Fragment } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 
@@ -21,23 +21,27 @@ const LastProducts = ({openGallery, id}) => {
                     <h2 className="text-center title">{title2}</h2>
                     <p className="text-center lead">{lead2}</p>
                 </div>
-                { gallery2?.length > 0 && gallery2.map(({title, description, photo, gallery}, i) => (
-                    <>
-                        {gallery !== null ?
-                            <button className="col-md-4 last-product" key={title+i} data-bs-toggle="modal" data-bs-target="#GalleryModal" onClick={() => openGallery(gallery)}>
-                                <GatsbyImage image={photo.localFile.childImageSharp.gatsbyImageData} alt={title} pl />
-                                <h3 className="text-center pt-5 pb-4 fw-bold">{title}</h3>
-                                <p className="text-center">{description}</p>
-                            </button>
-                        :
-                            <button className="col-md-4 last-product" key={title+i}>
-                                <GatsbyImage image={photo.localFile.childImageSharp.gatsbyImageData} alt={title} pl />
-                                <h3 className="text-center pt-5 pb-4 fw-bold">{title}</h3>
-                                <p className="text-center">{description}</p>
-                            </button>
-                        }
-                    </>
-                ))}
+                { gallery2?.length > 0 && gallery2.map(({title, description, photo, gallery}) => {
+
+
+                    return (
+                        <Fragment key={photo.id}>
+                            {gallery !== null ?
+                                <button className="col-md-4 last-product" data-bs-toggle="modal" data-bs-target="#GalleryModal" onClick={() => openGallery(gallery)}>
+                                    <GatsbyImage image={photo.localFile.childImageSharp.gatsbyImageData} alt={title} />
+                                    <h3 className="text-center pt-5 pb-4 fw-bold">{title}</h3>
+                                    <p className="text-center">{description}</p>
+                                </button>
+                            :
+                                <button className="col-md-4 last-product">
+                                    <GatsbyImage image={photo.localFile.childImageSharp.gatsbyImageData} alt={title} />
+                                    <h3 className="text-center pt-5 pb-4 fw-bold">{title}</h3>
+                                    <p className="text-center">{description}</p>
+                                </button>
+                            }
+                        </Fragment>
+                    )
+                })}
             </div>
         </div>        
     )
@@ -65,6 +69,7 @@ const query = graphql`
                                     )
                                 }
                             }
+                            id
                         }
                         gallery {
                             localFile {

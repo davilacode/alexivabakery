@@ -1,4 +1,4 @@
-import React from "react"
+import React, { Fragment } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 
@@ -22,9 +22,9 @@ const Products = ({openGallery, id}) => {
                     <p className="text-center lead">{lead}</p>
                 </div>
                 { gallery.length > 0 && gallery.map(({title, description, photo, gallery}, i) => (
-                    <>
+                    <Fragment key={photo.id}>
                         {gallery !== null ?
-                            <button className="col-md-3 single-product" key={title+i} data-bs-toggle="modal" data-bs-target="#GalleryModal" onClick={() => openGallery(gallery)}>
+                            <button className="col-md-3 single-product" data-bs-toggle="modal" data-bs-target="#GalleryModal" onClick={() => openGallery(gallery)}>
                                 <GatsbyImage image={photo.localFile.childImageSharp.gatsbyImageData} alt={title} />
                                 <h3 className="text-center py-4 fw-bold">{title}</h3>
                                 <p className="text-center">{description}</p>
@@ -36,7 +36,7 @@ const Products = ({openGallery, id}) => {
                                 <p className="text-center">{description}</p>
                             </button>
                         }
-                    </>
+                    </Fragment>
                 ))}
             </div>
         </div>        
@@ -64,6 +64,7 @@ const query = graphql`
                                     )
                                 }
                             }
+                            id
                         }
                         gallery {
                             localFile {

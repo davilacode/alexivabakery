@@ -1,4 +1,4 @@
-import React from "react"
+import React, { Fragment } from "react"
 import { StaticImage, GatsbyImage } from "gatsby-plugin-image"
 import parse from "html-react-parser"
 import { useStaticQuery, graphql, Link } from "gatsby"
@@ -52,14 +52,19 @@ const Footer = () => {
                     <div className="footer-menu justify-content-center align-items-center col-md-4 d-flex flex-column">
                         {menuItems && menuItems.nodes.map((item, i) => {
                             return (
-                                <Link
-                                    className="pb-3 fw-bold"
-                                    to={item.url}
-                                    activeClassName="active"
-                                    key={item.id+i}
-                                >
-                                    {item.label}
-                                </Link>
+                                <Fragment key={i}>
+                                    { item.label.includes("pedido") ? 
+                                        <a className="pb-3 fw-bold" target="_blank" href={item.url} title={item.label} rel="noreferrer noopener">{item.label}</a>
+                                    :
+                                        <Link
+                                            className="pb-3 fw-bold"
+                                            to={item.url}
+                                            activeClassName="active"
+                                        >
+                                            {item.label}
+                                        </Link>
+                                    }
+                                </Fragment>
                             )
                         })}
 
