@@ -65,7 +65,8 @@ const query = graphql`
                                     gatsbyImageData(
                                         layout: CONSTRAINED,
                                         placeholder: NONE
-                                        width: 300
+                                        width: 300,
+                                        height: 300
                                     )
                                 }
                             }

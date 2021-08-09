@@ -60,7 +60,8 @@ const query = graphql`
                                 childImageSharp {
                                     gatsbyImageData(
                                         layout: CONSTRAINED,
-                                        width: 300
+                                        width: 300,
+                                        height: 300
                                     )
                                 }
                             }
