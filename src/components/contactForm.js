@@ -62,7 +62,7 @@ const ContactForm = () => {
                             sendEmail({ 
                                 variables: {
                                     clientMutationId: "contactForm",
-                                    to: "andersonfidel.14@gmail.com",
+                                    to: "info21@alexivabakery.com",
                                     from: "no-reply@alexivabakery.com",
                                     subject: `Contacto Alexiva Bakery - ${data.name}`,
                                     body: `
