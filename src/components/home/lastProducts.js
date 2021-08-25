@@ -27,13 +27,13 @@ const LastProducts = ({openGallery, id}) => {
                     return (
                         <Fragment key={photo.id}>
                             {gallery !== null ?
-                                <button className="col-md-4 last-product" data-bs-toggle="modal" data-bs-target="#GalleryModal" onClick={() => openGallery(gallery)}>
+                                <button className="col-md-6 last-product" data-bs-toggle="modal" data-bs-target="#GalleryModal" onClick={() => openGallery(gallery)}>
                                     <GatsbyImage image={photo.localFile.childImageSharp.gatsbyImageData} alt={title} />
                                     <h3 className="text-center pt-5 pb-4 fw-bold">{title}</h3>
                                     <p className="text-center">{description}</p>
                                 </button>
                             :
-                                <button className="col-md-4 last-product">
+                                <button className="col-md-6 last-product">
                                     <GatsbyImage image={photo.localFile.childImageSharp.gatsbyImageData} alt={title} />
                                     <h3 className="text-center pt-5 pb-4 fw-bold">{title}</h3>
                                     <p className="text-center">{description}</p>

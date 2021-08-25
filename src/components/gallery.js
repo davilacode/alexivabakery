@@ -6,7 +6,7 @@ const Gallery = ({gallery}) => {
     let images = [];
     
     gallery && gallery.map((image)=>(
-        images.push({original: image.localFile.publicURL, thumbnail: image.localFile.publicURL})
+        images.push({original: image.localFile.publicURL, thumbnail: image.localFile.publicURL, originalHeight: 500})
     ))
 
     return (
